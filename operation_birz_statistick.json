@@ -1,0 +1,179 @@
+{
+     "operation": [
+          {
+               "ID": 1,
+               "Data": "Январь",
+               "Name_birz": "Московская",
+               "Stimost": 10750,
+               "Complited": true
+          },
+          {
+               "ID": 2,
+               "Data": "Январь",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 11432,
+               "Complited": true
+          },
+          {
+               "ID": 3,
+               "Data": "Январь",
+               "Name_birz": "Московская",
+               "Stimost": 45230,
+               "Complited": true
+          },
+          {
+               "ID": 4,
+               "Data": "Январь",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 9250,
+               "Complited": false
+          },
+          {
+               "ID": 5,
+               "Data": "Январь",
+               "Name_birz": "Московская",
+               "Stimost": 8249,
+               "Complited": false
+          },
+          {
+               "ID": 6,
+               "Data": "Февраль",
+               "Name_birz": "Московская",
+               "Stimost": 34452,
+               "Complited": true
+          },
+          {
+               "ID": 7,
+               "Data": "Февраль",
+               "Name_birz": "Московская",
+               "Stimost": 12442,
+               "Complited": true
+          },
+          {
+               "ID": 8,
+               "Data": "Февраль",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 54224,
+               "Complited": true
+          },
+          {
+               "ID": 9,
+               "Data": "Февраль",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 13500,
+               "Complited": true
+          },
+          {
+               "ID": 10,
+               "Data": "Февраль",
+               "Name_birz": "Московская",
+               "Stimost": 23470,
+               "Complited": false
+          },
+          {
+               "ID": 11,
+               "Data": "Март",
+               "Name_birz": "Московская",
+               "Stimost": 32625,
+               "Complited": true
+          },
+          {
+               "ID": 12,
+               "Data": "Март",
+               "Name_birz": "Московская",
+               "Stimost": 12000,
+               "Complited": true
+          },
+          {
+               "ID": 13,
+               "Data": "Март",
+               "Name_birz": "Московская",
+               "Stimost": 32000,
+               "Complited": true
+          },
+          {
+               "ID": 14,
+               "Data": "Март",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 1200420,
+               "Complited": false
+          },
+          {
+               "ID": 15,
+               "Data": "Март",
+               "Name_birz": "Московская",
+               "Stimost": 3750,
+               "Complited": false
+          },
+          {
+               "ID": 16,
+               "Data": "Апрель",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 45550,
+               "Complited": true
+          },
+          {
+               "ID": 17,
+               "Data": "Апрель",
+               "Name_birz": "Московская",
+               "Stimost": 90300,
+               "Complited": false
+          },
+          {
+               "ID": 18,
+               "Data": "Апрель",
+               "Name_birz": "Московская",
+               "Stimost": 100750,
+               "Complited": true
+          },
+          {
+               "ID": 19,
+               "Data": "Апрель",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 140000,
+               "Complited": true
+          },
+          {
+               "ID": 20,
+               "Data": "Апрель",
+               "Name_birz": "Московская",
+               "Stimost": 89000,
+               "Complited": true
+          },
+          {
+               "ID": 21,
+               "Data": "Май",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 73290,
+               "Complited": true
+          },
+          {
+               "ID": 22,
+               "Data": "Май",
+               "Name_birz": "Московская",
+               "Stimost": 900000,
+               "Complited": false
+          },
+          {
+               "ID": 23,
+               "Data": "Май",
+               "Name_birz": "Московская",
+               "Stimost": 34000,
+               "Complited": true
+          },
+          {
+               "ID": 24,
+               "Data": "Май",
+               "Name_birz": "Сантк-Питербургская",
+               "Stimost": 40552,
+               "Complited": true
+          },
+          {
+               "ID": 25,
+               "Data": "Май",
+               "Name_birz": "Московская",
+               "Stimost": 65950,
+               "Complited": true
+          }
+     ]
+}
