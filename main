@@ -1,0 +1,456 @@
+# Библиотеки
+import json
+import os
+import matplotlib.pyplot as plt
+# Данные для файла, если его не существует
+operation_birz = {
+    "operation":
+    [
+        {
+            "ID": 1,
+            "Data": "Январь",
+            "Name_birz": "Московская",
+            "Stimost": 10750,
+            "Complited" : True
+        },
+        {
+            "ID": 2,
+            "Data": "Январь",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 11432,
+            "Complited": True
+        },
+        {
+            "ID": 3,
+            "Data": "Январь",
+            "Name_birz": "Московская",
+            "Stimost": 45230,
+            "Complited": True
+        },
+        {
+            "ID": 4,
+            "Data": "Январь",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 9250,
+            "Complited": False
+        },
+        {
+            "ID": 5,
+            "Data": "Январь",
+            "Name_birz": "Московская",
+            "Stimost": 8249,
+            "Complited": False
+        },
+        {
+            "ID": 6,
+            "Data": "Февраль",
+            "Name_birz": "Московская",
+            "Stimost": 34452,
+            "Complited": True
+        },
+        {
+            "ID": 7,
+            "Data": "Февраль",
+            "Name_birz": "Московская",
+            "Stimost": 12442,
+            "Complited": True
+        },
+        {
+            "ID": 8,
+            "Data": "Февраль",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 54224,
+            "Complited": True
+        },
+        {
+            "ID": 9,
+            "Data": "Февраль",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 13500,
+            "Complited": True
+        },
+        {
+            "ID": 10,
+            "Data": "Февраль",
+            "Name_birz": "Московская",
+            "Stimost": 23470,
+            "Complited": False
+        },
+        {
+            "ID": 11,
+            "Data": "Март",
+            "Name_birz": "Московская",
+            "Stimost": 32625,
+            "Complited": True
+        },
+        {
+            "ID": 12,
+            "Data": "Март",
+            "Name_birz": "Московская",
+            "Stimost": 12000,
+            "Complited": True
+        },
+        {
+            "ID": 13,
+            "Data": "Март",
+            "Name_birz": "Московская",
+            "Stimost": 32000,
+            "Complited": True
+        },
+        {
+            "ID": 14,
+            "Data": "Март",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 1200420,
+            "Complited": False
+        },
+        {
+            "ID": 15,
+            "Data": "Март",
+            "Name_birz": "Московская",
+            "Stimost": 3750,
+            "Complited": False
+        },
+        {
+            "ID": 16,
+            "Data": "Апрель",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 45550,
+            "Complited": True
+        },
+        {
+            "ID": 17,
+            "Data": "Апрель",
+            "Name_birz": "Московская",
+            "Stimost": 90300,
+            "Complited": False
+        },
+        {
+            "ID": 18,
+            "Data": "Апрель",
+            "Name_birz": "Московская",
+            "Stimost": 100750,
+            "Complited": True
+        },
+        {
+            "ID": 19,
+            "Data": "Апрель",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 140000,
+            "Complited": True
+        },
+        {
+            "ID": 20,
+            "Data": "Апрель",
+            "Name_birz": "Московская",
+            "Stimost": 89000,
+            "Complited": True
+        },
+        {
+            "ID": 21,
+            "Data": "Май",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 73290,
+            "Complited": True
+        },
+        {
+            "ID": 22,
+            "Data": "Май",
+            "Name_birz": "Московская",
+            "Stimost": 900000,
+            "Complited": False
+        },
+        {
+            "ID": 23,
+            "Data": "Май",
+            "Name_birz": "Московская",
+            "Stimost": 34000,
+            "Complited": True
+        },
+        {
+            "ID": 24,
+            "Data": "Май",
+            "Name_birz": "Сантк-Питербургская",
+            "Stimost": 40552,
+            "Complited": True
+        },
+        {
+            "ID": 25,
+            "Data": "Май",
+            "Name_birz": "Московская",
+            "Stimost": 65950,
+            "Complited": True
+        },
+        {
+            "ID": 25,
+            "Data": "Май",
+            "Name_birz": "Московская",
+            "Stimost": 65950,
+            "Complited": True
+        }
+    ]
+}
+# Сохранение данных в файл
+json_object = json.dumps(operation_birz, indent=5, ensure_ascii=False)
+
+filename = 'operation_birz_statistick.json'
+isFile = os.path.isfile(filename)
+if (not isFile):
+    with open("operation_birz_statistick.json", "w", encoding="utf-8") as outfile:
+        outfile.write(json_object)
+else:
+    print(f'Файл {filename} уже существует.\n')
+
+# Нахождение дубликатов по ID
+def diblicat():
+    global json_object
+    dub = json.loads(json_object)
+    uniqueID = []
+
+    for i in dub['operation']:
+        if (i["ID"] not in uniqueID):
+            uniqueID.append(i["ID"])
+        else:
+            dub["operation"].remove(i)
+
+    json_object = json.dumps(dub, indent=5, ensure_ascii=False)
+
+    with open("operation_birz_statistick.json", "w", encoding="utf-8") as outfile:
+        outfile.write(json_object)
+
+diblicat()
+
+# Предварительный подсчёт общих показателей
+count = sum(map(lambda x: int(x['Stimost']), json.loads(json_object)['operation']))
+
+count_oper = sum(map(lambda x: bool(x['Complited'] == True), json.loads(json_object)['operation']))
+
+count_oper_not = sum(map(lambda x: bool(x['Complited'] == False), json.loads(json_object)['operation']))
+
+# Функции
+def sum_oper_true (json_object, count_oper, count_oper_not):
+    sum_operat_true = 0
+    sum_operat_false = 0
+    count_true_ob = 0
+    count_false_ob = 0
+    Complited_label_ob = ['Завершённые', 'Фальшивые (незавершённые)'];
+    count_Complited_label_ob = [];
+    a = json.loads(json_object)
+
+    for i in a['operation']:
+        if i['Complited'] == True:
+            sum_operat_true += int(i['Stimost'])
+            count_true_ob += 1
+        else:
+            sum_operat_false += int(i['Stimost'])
+            count_false_ob += 1
+
+    count_Complited_label_ob.append(count_true_ob)
+    count_Complited_label_ob.append(count_false_ob)
+
+    print (f'\nОбщая сумма по свершённым операциям: {sum_operat_true} руб.')
+    print(f'Общая сумма по не свершённым операциям: {sum_operat_false} руб.')
+    print(f'Средняя сумма по свершённым операциям: {round((sum_operat_true/count_oper), 2)} руб.')
+    print(f'Средняя сумма по не свершённым операциям: {round((sum_operat_true/count_oper_not), 2)} руб.')
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(count_Complited_label_ob, labels=Complited_label_ob, autopct='%1.1f%%', shadow=True, startangle=90)
+    plt.legend(Complited_label_ob, loc="best")
+    plt.show()
+
+def oper_sum_v_mec (json_object, filename):
+    count_vmec = 0
+    sum_vmec = 0
+    True_mec = 0
+    False_mec = 0
+    True_sum = 0
+    False_sum = 0
+    Complited_label = ['Завершённые', 'Фальшивые'];
+    count_Complited_label = [];
+    mec = input('\nВведение название месяца, для которого нужно подсчитать сумму продаж, количество операций: ')
+    b = json.loads(json_object)
+
+    for i in b['operation']:
+        if i['Data'] == mec:
+            sum_vmec += int(i['Stimost'])
+            count_vmec += 1
+
+    for i in b['operation']:
+        if i['Complited'] == True and i['Data'] == mec:
+            True_mec += 1
+            True_sum += int(i['Stimost'])
+
+    if (count_vmec) != 0:
+        count_Complited_label.append(True_mec)
+        False_mec = count_vmec - True_mec
+        count_Complited_label.append(False_mec)
+
+        False_sum = sum_vmec - True_sum
+
+        print(f'Общая сумма продаж за {mec}: {sum_vmec} руб. Операций свершено: {count_vmec}')
+        print(f'Из них: завершены {True_mec} шт. Оказались фальшивыми {False_mec} шт.')
+        print(f'По завершённым операциям сумма составила {True_sum} руб. , а по фальшивыми {False_sum} руб.')
+
+        fig1, ax1 = plt.subplots()
+        ax1.pie(count_Complited_label, labels=Complited_label, autopct='%1.1f%%', shadow=True, startangle=90)
+        plt.legend(Complited_label, loc="best")
+        plt.show()
+
+    else:
+        print("Данного месяца не существует в данных файла. Если Вы хотите добавить запись, то введите 5 при выборе команды")
+
+def unicum_birz (json_object):
+    c = json.loads(json_object)
+    uniqueNames = []
+    coun_names_count_birz = []
+    suma_birz = 0
+
+    for i in c['operation']:
+        if (i["Name_birz"] not in uniqueNames):
+            uniqueNames.append(i["Name_birz"])
+    len_unicum = len(uniqueNames)
+    print(f'\nСписок бирж, учавствующих в анализе: {uniqueNames}, длина списка = {len_unicum}')
+
+    for j in range(len_unicum):
+        for i in c['operation']:
+            if i["Name_birz"] == uniqueNames[j]:
+                suma_birz += 1
+        coun_names_count_birz.append(suma_birz)
+        suma_birz = 0
+    print(f'\nЧисло операций, свершённых на биржах: {uniqueNames}, соотвественно ровна: {coun_names_count_birz}')
+
+    fig1, ax1 = plt.subplots()
+    ax1.pie(coun_names_count_birz, labels=uniqueNames, autopct='%1.1f%%',shadow=True, startangle=90)
+    plt.legend(uniqueNames, loc="best")
+    plt.show()
+
+
+def deleteprod():
+    global json_object
+    s = int(input('Введите номер элемента: '))
+    d = json.loads(json_object)
+
+    for i in d["operation"]:
+        if i["ID"] == s:
+            d["operation"].remove(i)
+
+    json_object = json.dumps(d, indent=5, ensure_ascii=False)
+
+    with open("operation_birz_statistick.json", "w", encoding="utf-8") as outfile:
+        outfile.write(json_object)
+
+def appprod():
+    global json_object
+    a_ad = json.loads(json_object)
+    add_data = {}
+
+    ID_add = int(input('Введите номер записи (целое число): '))
+    Data_add = input('Введите название месяца: ')
+    Name_birz_add = input('Введите название биржы: ')
+    Stimost_add = int(input('Введите сумму (целое число) : '))
+    Complited_add_boll = int(input('Введите 1, если операция свершилась, иначе 0: '))
+    Complited_add = True
+    if Complited_add == 0:
+        Complited_add = False
+
+    add_data = {'ID': ID_add, 'Data': Data_add, 'Name_birz': Name_birz_add , 'Stimost': Stimost_add , 'Complited': Complited_add}
+    a_ad['operation'].append(add_data)
+
+    json_object = json.dumps(a_ad, indent=5, ensure_ascii=False)
+
+    with open("operation_birz_statistick.json", "w", encoding="utf-8") as outfile:
+        outfile.write(json_object)
+
+def gisto_stimost():
+    index = []
+    values = []
+    grafik = json.loads(json_object)
+
+    for i in grafik["operation"]:
+        index.append(int(i['ID']))
+        if i['Complited'] == True:
+            values.append(int(i['Stimost']))
+        else:
+            values.append(int(i['Stimost'])*-1)
+
+    plt.bar(index, values)
+    plt.show()
+
+# Вызов меню в первый раз
+print("\nПеред Вами будет представлено меню, с помощью которого Вы можете выполнять различные команды для взаимодействия с данными")
+print("\nМеню")
+print("1. Вывод общих показателей по данным")
+print("2. Вывод показателей по данным за месяц")
+print("3. Вывод показателей по данным о биржах")
+print("4. Вывод данных")
+print("5. Добавить элемент в файл")
+print("6. Удалить элемент из файла")
+print("7. Показать меню")
+print("8. Выход")
+
+# Основа программы
+if __name__ == "__main__":
+    while True:
+        choice = input("\n |||||||| Выберите действие (введите номер действия): ")
+
+        if choice == "1":
+
+            print(f'\nОбщая сумма продаж: {count} руб.')
+            print(f'Общая сумма операций: {count_oper_not + count_oper} шт.')
+            print(f'Средняя сумма по операциям: {round(count / (count_oper_not + count_oper), 2)} руб.')
+
+            sum_oper_true(json_object, count_oper, count_oper_not)
+            gisto_stimost()
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "2":
+
+            oper_sum_v_mec(json_object, filename)
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "3":
+
+            unicum_birz (json_object)
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "4":
+
+            slovar = json.loads(json_object)
+            print(json.dumps(slovar, indent=5, ensure_ascii=False))
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "5":
+
+            appprod()
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "6":
+
+            deleteprod()
+
+            print("\nЧтобы вывести на экран меню, введите 7")
+
+        elif choice == "7":
+
+            print("\nМеню")
+            print("1. Вывод общих показателей по данным")
+            print("2. Вывод показателей по данным за месяц")
+            print("3. Вывод показателей по данным о биржах")
+            print("4. Вывод данных")
+            print("5. Добавить элемент в файл")
+            print("6. Удалить элемент из файла")
+            print("7. Удалить элемент из файла")
+            print("8. Выход")
+
+        elif choice == "8":
+            print("|||||  Работа программы завершена  |||||")
+            break
+
+        else:
+            print("|||||  Данной команды (номера действия) не существует. Попробуйте ввести другое значение.  |||||")
+            print("\nЧтобы вывести на экран меню, введите 7")
